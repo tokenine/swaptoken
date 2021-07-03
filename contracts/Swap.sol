@@ -19,11 +19,13 @@ contract TokenineSwap is Ownable, AccessControl {
     constructor(
         address _tokenA,
         address _tokenB,
-        address _payTo
+        address _payTo,
+        address _feeTo
     ) public {
         tokenA = IERC20(_tokenA);
         tokenB = IERC20(_tokenB);
         payTo = _payTo;
+        feeTo = _feeTo;
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(ADMIN_ROLE, msg.sender);
     }
