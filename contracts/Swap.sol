@@ -64,12 +64,12 @@ contract TokenineSwap is Ownable, AccessControl {
     }
     
     function ownerReclaimA() public  {
-        require(msg.sender != payTo, "Caller is not a Payee");
+        require(msg.sender == payTo, "Caller is not a Payee");
         tokenA.transfer(msg.sender, tokenA.balanceOf(address(this)));
     }
 
     function ownerReclaimB() public  {
-        require(msg.sender != payTo, "Caller is not a Payee");
+        require(msg.sender == payTo, "Caller is not a Payee");
         tokenB.transfer(msg.sender, tokenB.balanceOf(address(this)));
     }
     function flushBNB() public  {
