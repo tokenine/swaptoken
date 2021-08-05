@@ -16,7 +16,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
       from: deployer,
       args: [tokenA, tokenB, never, never, dev, feeTo, dev],
       log: true,
-      deterministicDeployment: false
+      deterministicDeployment: true
     })
   }
   

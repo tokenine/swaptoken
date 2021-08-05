@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.6.6;
+pragma solidity 0.6.12;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
@@ -17,6 +17,7 @@ contract LaunchpadGift is Ownable, AccessControl {
     uint256 public giftrate = 1;
     uint256 public minTokenD = 1000;
     address public  feeTo;
+    uint public debug = 1;
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant MERCHANT_ROLE = keccak256("MERCHANT_ROLE");
     
@@ -31,8 +32,8 @@ contract LaunchpadGift is Ownable, AccessControl {
     ) public {
         tokenA = IERC20(_tokenA);
         tokenB = IERC20(_tokenB);
-        tokenA = IERC20(_tokenC);
-        tokenB = IERC20(_tokenD);
+        tokenC = IERC20(_tokenC);
+        tokenD = IERC20(_tokenD);
         feeTo = _feeTo;
         _setupRole(DEFAULT_ADMIN_ROLE, _admin);
         _setupRole(ADMIN_ROLE, _admin);
@@ -41,7 +42,7 @@ contract LaunchpadGift is Ownable, AccessControl {
 
     function swap(uint256 _amount) public {
         require(_amount > 100000000000000000, "amount to small");
-        require(tokenD.balanceOf(address(msg.sender)) > minTokenD, "sender must hold TokenD");
+        require(tokenD.balanceOf(address(msg.sender)) > minTokenD, "sender must hold Token");
         uint256 _payback = _amount.mul(rate);
         uint256 _payfee = _amount.mul(feerate).div(100);
         uint256 _paygift = _amount.mul(giftrate).div(100);
