@@ -48,6 +48,7 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: {
       default: 137,
+      35: "0x4A4cF4741a96D8e0123a490cA720d84fD9b15bc4",
       97: "0x4A4cF4741a96D8e0123a490cA720d84fD9b15bc4",
       56: "0x4A4cF4741a96D8e0123a490cA720d84fD9b15bc4",
       96: "0x4A4cF4741a96D8e0123a490cA720d84fD9b15bc4",
@@ -58,10 +59,11 @@ const config: HardhatUserConfig = {
       default: 137,
       // dev address mainnet
       // 1: "",
-        97: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
-        56: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
-        96: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
-        137: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
+      35: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
+      97: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
+      56: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
+      96: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
+      137: "0xBC0EE23C8A355f051a9309bce676F818d35743D1",
     },
   },
   networks: {
@@ -184,13 +186,20 @@ const config: HardhatUserConfig = {
       live: true,
       saveDeployments: true,
     },
+    xchain: {
+      url: "https://rpc.xchain.asia",
+      accounts: [`0x${pkey}`],
+      chainId: 35,
+      live: true,
+      saveDeployments: true,
+    },
     bkc: {
       url: "https://rpc.bitkubchain.io",
       accounts: [`0x${pkey}`],
       chainId: 96,
       live: true,
       saveDeployments: true,
-    },    
+    },
     bsc: {
       url: "https://bsc-dataseed.binance.org",
       accounts: [`0x${pkey}`],
@@ -204,8 +213,7 @@ const config: HardhatUserConfig = {
       chainId: 97,
       live: true,
       saveDeployments: true,
-      tags: ["staging"],
-      gasPrice: 20000000000,
+      gasPrice: 10000000000,
     },
     heco: {
       url: "https://http-mainnet.hecochain.com",
